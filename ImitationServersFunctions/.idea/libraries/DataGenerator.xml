@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="DataGenerator">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../ems-insyte-generator/DataGenerator/out/artifacts/DataGenerator_jar/DataGenerator.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

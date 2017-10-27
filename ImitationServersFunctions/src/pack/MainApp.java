@@ -1,10 +1,6 @@
 package pack;
 
 import java.io.FileReader;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class MainApp {
     public static void main(String[] args){
@@ -14,7 +10,8 @@ public class MainApp {
         System.out.println(ts);*/
 
 
-        testImportFromCsvToCassandra();
+        //testImportFromCsvToCassandra();
+        testImportFromGeneratorToCassandra();
     }
 
     private static void testImportFromCsvToCassandra() {
@@ -24,5 +21,9 @@ public class MainApp {
         catch (Exception ex){
             ex.printStackTrace();
         }
+    }
+
+    private static void testImportFromGeneratorToCassandra(){
+        new ImportFromGeneratorToCassandra().Import();
     }
 }

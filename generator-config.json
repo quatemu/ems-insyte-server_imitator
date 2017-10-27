@@ -1,0 +1,23 @@
+{
+	"Generator_Type__COMMENT" : "One from the list [Random, Analog, Digital]",
+	"Generator_Type" : "Random",
+	"Signal_Parameters" : {
+		"Value_Intervals" : {
+			"Min_Value" : "-10.7",
+			"Max_Value" : "12.48"
+		},
+		"Function_Type__COMMENT" : "One from the list [Continuous, Piecewise]",
+		"Function_Type" : "Continuous",
+		"Using_Variables__COMMENT" : "if you use random, you can leave this field empty. If you use another type, list the names of variables separated by comma",
+		"Using_Variables" : ""
+	},
+	"Generation_Parameters" : {
+		"Datetime_Intervals__COMMENT" : "DATETIME FORMAT: '{4 digits}-{2 digits}-{2 digits}T{2 digits}:{2 digits}:{2 digits}'",
+		"Datetime_Intervals" : {
+			"Min_Value" : "2012-12-01T01:01:00",
+			"Max_Value" : "2012-12-31T01:23:45"
+		},
+		"Generation_Step__COMMENT" : "Generation step in seconds",
+		"Generation_Step" : "600"
+	}
+}
