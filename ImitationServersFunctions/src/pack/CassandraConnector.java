@@ -53,9 +53,13 @@ public class CassandraConnector {
     }
 
     public void insertDatas(List<Measure> measures){
+        int MAXBATCHSIZE = 20;
 
+        long start = System.nanoTime();
+        int currentBatchSize = 0;
+        StringBuilder sb = new StringBuilder();
         for(Measure measure : measures){
-            StringBuilder sb = new StringBuilder("INSERT INTO ")
+            sb.append("INSERT INTO ")
                     .append(KeyspaceName + "." + MeasuresTableName)
                     .append("(date, device_id, data_source_id, value) ")
                 .append("VALUES ('")
@@ -64,11 +68,27 @@ public class CassandraConnector {
                     .append(measure.DataSourceID + ",")
                     .append(measure.Value)
                 .append(");");
-            //System.out.println(sb.toString());
-
-            String query = sb.toString();
+            if(++currentBatchSize >= MAXBATCHSIZE)
+            {
+                String query = "BEGIN BATCH "
+                                + sb.toString() +
+                                " APPLY BATCH;";
+                session.execute(query);
+                sb.setLength(0);
+                currentBatchSize = 0;
+            }
+        }
+        if(currentBatchSize != 0){
+            String query = "BEGIN BATCH "
+                            + sb.toString() +
+                            " APPLY BATCH;";
             session.execute(query);
         }
+
+
+        long end = System.nanoTime();
+        System.out.print("Required time: ");
+        System.out.println(end - start);
     }
 
     public void selectAll() {

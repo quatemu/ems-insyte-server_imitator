@@ -10,12 +10,12 @@ public class MainApp {
         System.out.println(ts);*/
 
 
-        //testImportFromCsvToCassandra();
-        testImportFromGeneratorToCassandra();
+        testImportFromCsvToCassandra();
+        //testImportFromGeneratorToCassandra();
     }
 
     private static void testImportFromCsvToCassandra() {
-        try(FileReader fileReader = new FileReader("examples\\test_3.csv")){
+        try(FileReader fileReader = new FileReader("examples\\Умный дом.csv")){
             new ImportFromCsvToCassandra().Import(fileReader, "dd.MM.yyyy HH:mm");
         }
         catch (Exception ex){
